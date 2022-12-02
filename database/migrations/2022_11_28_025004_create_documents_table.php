@@ -16,7 +16,11 @@ class CreateDocumentsTable extends Migration
         Schema::create('documents', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->text('content');
+            $table->text('description');
+            $table->enum('disk', ['local', 'public', 's3']);
+            $table->string('filepath');
+            $table->string('mimetype')->default("application/pdf");
+            $table->unsignedMediumInteger('filesize');
             $table->timestamps();
         });
     }
