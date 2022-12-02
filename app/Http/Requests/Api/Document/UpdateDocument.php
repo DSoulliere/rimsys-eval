@@ -24,8 +24,9 @@ class UpdateDocument extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'string:min:10|max:100',
-            'content' => 'string|min:10',
+            'name' => 'string:min:6|max:100',
+            'description' => 'string|min:10',
+            'file' => 'file'
         ];
     }
 }
