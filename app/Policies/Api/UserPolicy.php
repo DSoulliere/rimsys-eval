@@ -20,7 +20,7 @@ class UserPolicy
      */
     public function isUser(User $user, User $reader)
     {
-        return $reader->id === $user->id;
+        return $reader->id === $reader->id;
     }
 
     /**
@@ -45,7 +45,7 @@ class UserPolicy
      */
     public function show(User $reader, User $readable)
     {
-        return true;
+        return $reader->id === $readable->id;
     }
 
     /**
@@ -83,6 +83,6 @@ class UserPolicy
      */
     public function destroy(User $editor, User $editable)
     {
-        return $editor->is($editable);
+        return false;
     }
 }
