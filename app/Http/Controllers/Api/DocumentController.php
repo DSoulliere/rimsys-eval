@@ -9,7 +9,6 @@ use App\Models\Document;
 
 class DocumentController extends Controller
 {
-
     /**
      * Display a listing of the documents.
      *
@@ -50,7 +49,11 @@ class DocumentController extends Controller
     public function store(StoreDocument $request)
     {
         $fields = $request->validated();
-        $document = Document::create($fields)->fresh();
+        $file = $fields['file'];
+        $document = Document::createFromFile($file, [
+            'name' => $fields['name'],
+            'description' => $fields['description'],
+        ]);
 
         return new DocumentResource($document);
     }
@@ -67,8 +70,15 @@ class DocumentController extends Controller
     {
         $fields = $request->validated();
 
-        $document->fill($fields);
-        $document->save();
+
+        if (!empty($fields['file'])) {
+            $file = $fields['file'];
+            $document->updateFromFile($file, $fields);
+            return new DocumentResource($document->fresh());
+        } else {
+            $document->fill($fields);
+            $document->save();
+        }
 
         return new DocumentResource($document->fresh());
     }

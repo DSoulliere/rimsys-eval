@@ -24,8 +24,9 @@ class StoreDocument extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|string:min:10|max:100',
-            'content' => 'required|string|min:10',
+            'name' => 'required|string:min:6|max:100',
+            'description' => 'required|string|min:7',
+            'file' => 'file|required'
         ];
     }
 }
