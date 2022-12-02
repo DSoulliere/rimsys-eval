@@ -1,0 +1,603 @@
+{
+	"info": {
+		"_postman_id": "dd2c9dc4-aa99-47f4-9f50-764c21779386",
+		"name": "Rimsys",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "9652137"
+	},
+	"item": [
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "User.Document",
+					"item": [
+						{
+							"name": "User.Document.Index",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{apiurl}}/users/:id/documents",
+									"host": [
+										"{{apiurl}}"
+									],
+									"path": [
+										"users",
+										":id",
+										"documents"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "me"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "User.Document.Link",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"url": {
+									"raw": "{{apiurl}}/users/:id/documents/:document",
+									"host": [
+										"{{apiurl}}"
+									],
+									"path": [
+										"users",
+										":id",
+										"documents",
+										":document"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "me"
+										},
+										{
+											"key": "document",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "User.Document.Detach",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{apiurl}}/users/:id/documents/:document",
+									"host": [
+										"{{apiurl}}"
+									],
+									"path": [
+										"users",
+										":id",
+										"documents",
+										":document"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "me"
+										},
+										{
+											"key": "document",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "User.Index",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{apiurl}}/users",
+							"host": [
+								"{{apiurl}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User.Show",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{apiurl}}/users/:id",
+							"host": [
+								"{{apiurl}}"
+							],
+							"path": [
+								"users",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "me"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User.Store",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "A Name",
+									"description": "required|string|min:6",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "email@email.com",
+									"description": "required|email|unique:users,email",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "password",
+									"description": "required|confirmed|min:8",
+									"type": "text"
+								},
+								{
+									"key": "password_confirmation",
+									"value": "password",
+									"description": "required|confirmation",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{apiurl}}/users",
+							"host": [
+								"{{apiurl}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User.Update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "A Name!",
+									"description": "string|min:6",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "email@email.com",
+									"description": "email|unique:users,email",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "password",
+									"description": "confirmed|min:8",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{apiurl}}/users/:id",
+							"host": [
+								"{{apiurl}}"
+							],
+							"path": [
+								"users",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "me"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User.Destroy",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{apiurl}}/users/:id",
+							"host": [
+								"{{apiurl}}"
+							],
+							"path": [
+								"users",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "me"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{token}}",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Document",
+			"item": [
+				{
+					"name": "Document.Index",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{apiurl}}/documents",
+							"host": [
+								"{{apiurl}}"
+							],
+							"path": [
+								"documents"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Document.Show",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{apiurl}}/documents/:id",
+							"host": [
+								"{{apiurl}}"
+							],
+							"path": [
+								"documents",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Document.Store",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "A Name",
+									"description": "required|string:min:6|max:100",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Dexcription",
+									"description": "required|string|min:7",
+									"type": "text"
+								},
+								{
+									"key": "file",
+									"description": "file|required",
+									"type": "file",
+									"src": "/C:/Users/Admin/Downloads/mock..xlsx"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{apiurl}}/documents",
+							"host": [
+								"{{apiurl}}"
+							],
+							"path": [
+								"documents"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Document.Update",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "A Name",
+									"description": "required|string:min:6|max:100",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Dexcription",
+									"description": "required|string|min:7",
+									"type": "text"
+								},
+								{
+									"key": "file",
+									"description": "file|required",
+									"type": "file",
+									"src": "/C:/Users/Admin/Downloads/mock..xlsx"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{apiurl}}/documents/:id",
+							"host": [
+								"{{apiurl}}"
+							],
+							"path": [
+								"documents",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Document.Destroy",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{apiurl}}/documents/:id",
+							"host": [
+								"{{apiurl}}"
+							],
+							"path": [
+								"documents",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{token}}",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "A Name",
+									"description": "required|string|min:6",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "email@email.com",
+									"description": "required|email|unique:users,email",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "password",
+									"description": "required|confirmed|min:8",
+									"type": "text"
+								},
+								{
+									"key": "password_confirmation",
+									"value": "password",
+									"description": "required|confirmation",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{apiurl}}/users",
+							"host": [
+								"{{apiurl}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "admin@admin.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "password",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{apiurl}}/auth",
+							"host": [
+								"{{apiurl}}"
+							],
+							"path": [
+								"auth"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Logout",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{apiurl}}/auth",
+							"host": [
+								"{{apiurl}}"
+							],
+							"path": [
+								"auth"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"pm.request.headers.add({",
+					"    key: 'X-Requested-With',",
+					"    value: 'XMLHttpRequest'",
+					"});"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
