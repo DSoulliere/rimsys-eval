@@ -1,0 +1,90 @@
+<?php
+
+namespace App\Http\Controllers\Api;
+
+use App\Http\Controllers\Controller;
+use App\Http\Requests\Api\DummyModel\{ IndexDummyModel, ShowDummyModel, StoreDummyModel, UpdateDummyModel, DestroyDummyModel };
+use App\Models\DummyModel;
+use Spatie\QueryBuilder\QueryBuilder;
+use App\Http\Resources\DummyResource;
+
+class DummyController extends Controller
+{
+
+    /**
+     * Display a listing of the DummyPluralBinding.
+     *
+     * @param  \App\Http\Requests\Api\DummyModel\IndexDummyModel  $request
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index(IndexDummyModel $request)
+    {
+        $fields = $request->validated();
+        $query = DummyModel::select();
+
+        $DummyPluralBinding = $query->paginate($request->input('per_page') ?? null)->appends(request()->query());
+
+        return DummyResource::collection($DummyPluralBinding);
+    }
+
+    /**
+     * Display the specified DummyBinding.
+     *
+     * @param  \App\Models\DummyModel  $DummyBinding
+     * @param  \App\Http\Requests\Api\DummyModel\ShowDummyModel  $request
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function show(DummyModel $DummyBinding, ShowDummyModel $request)
+    {
+        return new DummyResource($DummyBinding);
+    }
+
+    /**
+     * Store a newly created DummyBinding in storage.
+     *
+     * @param  \App\Http\Requests\Api\DummyModel\StoreDummyModel  $request
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function store(StoreDummyModel $request)
+    {
+        $fields = $request->validated();
+        $DummyBinding = DummyModel::create($fields)->fresh();
+
+        return new DummyResource($DummyBinding);
+    }
+
+    /**
+     * Update the specified DummyBinding in storage.
+     *
+     * @param  \App\Models\DummyModel  $DummyBinding
+     * @param  \App\Http\Requests\Api\DummyModel\UpdateDummyModel  $request
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function update(DummyModel $DummyBinding, UpdateDummyModel $request)
+    {
+        $fields = $request->validated();
+
+        $DummyBinding->fill($fields);
+        $DummyBinding->save();
+
+        return new DummyResource($DummyBinding->fresh());
+    }
+
+    /**
+     * Remove the specified DummyBinding from storage.
+     *
+     * @param  \App\Models\DummyModel  $DummyBinding
+     * @param  \App\Http\Requests\Api\DummyModel\DestroyDummyModel  $request
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(DummyModel $DummyBinding, DestroyDummyModel $request)
+    {
+        $DummyBinding->delete();
+        return response()->json(null, 204);
+    }
+}

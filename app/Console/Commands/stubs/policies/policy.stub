@@ -1,0 +1,75 @@
+<?php
+
+namespace App\Policies\Api;
+
+use App\Models\{ DummyModel, User };
+
+use Illuminate\Auth\Access\HandlesAuthorization;
+
+class DummyPolicy
+{
+    use HandlesAuthorization;
+
+    /**
+     * Determine whether the user can view any DummyPluralBinding.
+     *
+     * @param  \App\Models\User  $user
+     *
+     * @return mixed
+     */
+    public function index(User $user)
+    {
+        return true;
+    }
+
+    /**
+     * Determine whether the user can view the DummyBinding.
+     *
+     * @param  \App\Models\User  $user
+     * @param  \App\Models\DummyModel  $DummyBinding
+     *
+     * @return mixed
+     */
+    public function show(User $user, DummyModel $DummyBinding)
+    {
+        return true;
+    }
+
+    /**
+     * Determine whether the user can create DummyPluralBinding.
+     *
+     * @param  \App\Models\User  $user
+     *
+     * @return mixed
+     */
+    public function store(User $user)
+    {
+        return true;
+    }
+
+    /**
+     * Determine whether the user can update the DummyBinding.
+     *
+     * @param  \App\Models\User  $user
+     * @param  \App\Models\DummyModel  $DummyBinding
+     *
+     * @return mixed
+     */
+    public function update(User $user, DummyModel $DummyBinding)
+    {
+        return true;
+    }
+
+    /**
+     * Determine whether the user can delete the DummyBinding.
+     *
+     * @param  \App\Models\User  $user
+     * @param  \App\Models\DummyModel  $DummyBinding
+     *
+     * @return mixed
+     */
+    public function destroy(User $user, DummyModel $DummyBinding)
+    {
+        return true;
+    }
+}
