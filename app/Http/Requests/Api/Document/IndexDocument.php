@@ -13,7 +13,7 @@ class IndexDocument extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return $this->user()->can('index', $this->route('document'));
     }
 
     /**

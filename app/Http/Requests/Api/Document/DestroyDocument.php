@@ -13,7 +13,7 @@ class DestroyDocument extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        return $this->user()->can('destroy', $this->route('document'));
     }
 
     /**

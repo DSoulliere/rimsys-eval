@@ -13,7 +13,7 @@ class StoreDocument extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        return $this->user()->can('store', $this->route('document'));
     }
 
     /**
